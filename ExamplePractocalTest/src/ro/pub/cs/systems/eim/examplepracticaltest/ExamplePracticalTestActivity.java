@@ -6,11 +6,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -36,11 +40,51 @@ public class ExamplePracticalTestActivity extends Activity {
 	
 	private MessageBroadcastReceiver messageBroadcastReceiver = new MessageBroadcastReceiver();
 
+	private EditText editTextTest;
+
+	private CheckBox checkBoxTest;
+
 	public class MessageBroadcastReceiver extends BroadcastReceiver{
 
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			Log.d("[Message]", intent.getStringExtra("message"));
+		}
+	}
+	
+	private CheckBoxListener cbl = new CheckBoxListener();
+	private TextListener tl = new TextListener();
+	
+	private class TextListener implements TextWatcher{
+
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			checkBoxTest.setText("Default");
+			
+		}
+
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before, int count) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void afterTextChanged(Editable s) {
+			checkBoxTest.setText("S-a scris ceva in editText");
+			
+		}
+		
+	}
+	
+	private class CheckBoxListener implements CompoundButton.OnCheckedChangeListener{
+
+		@Override
+		public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+			if(isChecked)
+				editTextTest.setText("ACCEPT !!");
+			else	
+				editTextTest.setText("Nu ACCEPT !!");
 		}
 	}
 	
@@ -88,6 +132,12 @@ public class ExamplePracticalTestActivity extends Activity {
 		this.pressMeToo = (Button)findViewById(R.id.pressMeToo);
 		this.editText1 = (EditText)findViewById(R.id.editText1);
 		this.editText2 = (EditText)findViewById(R.id.editText2);
+		
+		this.checkBoxTest = (CheckBox)findViewById(R.id.test2);
+		this.checkBoxTest.setOnCheckedChangeListener(cbl);
+		
+		this.editTextTest = (EditText)findViewById(R.id.test1);
+		this.editTextTest.addTextChangedListener(tl);
 		
 		this.pressMe.setOnClickListener(buttonListener);
 		this.pressMeToo.setOnClickListener(buttonListener);

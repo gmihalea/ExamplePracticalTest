@@ -54,7 +54,8 @@
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:layout_gravity="center"
-		    android:text="Press Me !"/>
+		    android:text="Press Me !"
+		    android:background="#90150517"/>
         
          <Button
 	        android:id="@+id/pressMeToo"
@@ -63,5 +64,18 @@
 		    android:layout_gravity="center"
 		    android:text="Press Me, Too !"/>
    	</GridLayout>
+   	
+    <EditText 
+        android:id="@+id/test1"
+            android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:layout_gravity="center"
+	    	android:ems="10"/>
+    
+    <CheckBox 
+        android:id="@+id/test2"
+            android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:text="Accept"/>
     
 </LinearLayout>
