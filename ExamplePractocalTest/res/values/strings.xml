@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">ExamplePractocalTest</string>
+    <string name="app_name_sec">ExamplePracticalTestSecondaryActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_example_practical_test_secondary">ExamplePracticalTestSecondaryActivity</string>
